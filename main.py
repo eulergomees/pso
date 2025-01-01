@@ -33,6 +33,7 @@ ftmedia = []
 ftgbest = []
 
 #PSO
+start_time = time.time()
 for i in range(maxit):
     for j in range(particles):
         inertia = w * velocities[j]
@@ -43,3 +44,8 @@ for i in range(maxit):
         positions[i] += velocities[i]
 
         positions[i] = np.clip(positions[i], grid[0], grid[1])
+
+
+
+
+end = start_time - time.time()
