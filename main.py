@@ -38,3 +38,8 @@ for i in range(maxit):
         inertia = w * velocities[j]
         cognitive = c1 * np.random.uniform(0, 1, dim) * (pbest_pos[j] - positions[j])
         social = c2 * np.random.uniform(0, 1, dim) * (gbest_pos - positions[j])
+
+        velocities[i] = inertia + cognitive + social
+        positions[i] += velocities[i]
+
+        positions[i] = np.clip(positions[i], grid[0], grid[1])
