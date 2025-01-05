@@ -3,12 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 
-maxit = 20
+maxit = 100
 w = 0.5 #Inertia
 c1 = 1.5 #Cog
-c2 = 1. #Social
-particles = 100
-dim = 2
+c2 = 1.5 #Social
+particles = 60
+dim = 5
 grid = [-5.12, 5.12]
 
 def rastringin(position):
@@ -31,12 +31,12 @@ def rosenbrock(position):
 positions = np.random.uniform(-5.12, 5.12, (particles, dim))
 velocities = np.random.uniform(-1, 1, (particles, dim))
 
-
 pbest_positions = np.copy(positions)
 pbest_fitness = np.array([rastringin(p) for p in positions])
 gbest_position = positions[np.argmin(pbest_fitness)]
 gbest_fitness = np.min(pbest_fitness)
 
+#Metrics
 ftmean = []
 ftgbest = []
 ftstd = []
@@ -81,3 +81,22 @@ execution_time = time.time() - start_time
 print(f"Tempo de execução: {execution_time:.4f} segundos")
 print(f"Posição ótima encontrada (gbest): {gbest_position}")
 print(f"Fitness do gbest: {gbest_fitness}")
+
+#Add plots
+plt.figure(figsize=(10,6))
+
+#Average fit chart
+#plt.subplot(1,3,1)
+plt.plot(ftmean, label="Average fitness")
+plt.xlabel('It')
+plt.ylabel('AverageFitness')
+plt.legend()
+
+#Gbest fitness chart
+
+#Std chart
+
+
+#Plot
+plt.tight_layout()
+plt.show()
